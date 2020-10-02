@@ -1192,6 +1192,18 @@ void setup() {
 
   marlin_state = MF_RUNNING;
 
+  //Tell Marlin that we know where all axis are Kalle:
+  /**
+ * axis_homed
+ *   Flags that each linear axis was homed. othervice blinking "?"
+ *
+ * axis_known_position
+ *   Flags that the position is known in each linear axis. Set when homed.
+ *   Cleared whenever a stepper powers off, potentially losing its position.
+ */
+  axis_homed = 0xFF; //Otherwise they'll blink "?"
+  //axis_known_position = 0xFF; //Otherwise they'll blink "0" till homed
+
   SETUP_LOG("setup() completed.");
 }
 

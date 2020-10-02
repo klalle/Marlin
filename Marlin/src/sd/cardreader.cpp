@@ -1118,6 +1118,7 @@ void CardReader::fileHasFinished() {
     startFileprint();
   }
   else {
+    feedrate_percentage=100; //Kalle reset "Speed" to 100 %
     endFilePrint();
 
     #if ENABLED(SDCARD_SORT_ALPHA)

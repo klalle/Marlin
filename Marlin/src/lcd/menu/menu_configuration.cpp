@@ -330,7 +330,6 @@ void menu_configuration() {
     SUBMENU(MSG_DEBUG_MENU, menu_debug);
   #endif
 
-  SUBMENU(MSG_ADVANCED_SETTINGS, menu_advanced_settings);
 
   #if ENABLED(BABYSTEP_ZPROBE_OFFSET)
     SUBMENU(MSG_ZPROBE_ZOFFSET, lcd_babystep_zoffset);
@@ -408,9 +407,11 @@ void menu_configuration() {
 
   #if DISABLED(SLIM_LCD_MENUS)
     // Preheat configurations
-    SUBMENU(MSG_PREHEAT_1_SETTINGS, menu_preheat_material1_settings);
-    SUBMENU(MSG_PREHEAT_2_SETTINGS, menu_preheat_material2_settings);
+    // SUBMENU(MSG_PREHEAT_1_SETTINGS, menu_preheat_material1_settings); //Kalle
+    // SUBMENU(MSG_PREHEAT_2_SETTINGS, menu_preheat_material2_settings); //Kalle
   #endif
+
+  SUBMENU(MSG_ADVANCED_SETTINGS, menu_advanced_settings); //Kalle moved to end
 
   #if ENABLED(EEPROM_SETTINGS)
     ACTION_ITEM(MSG_STORE_EEPROM, lcd_store_settings);

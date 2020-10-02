@@ -110,7 +110,7 @@
  * Select a secondary serial port on the board to use for communication with the host.
  * :[-1, 0, 1, 2, 3, 4, 5, 6, 7]
  */
-//#define SERIAL_PORT_2 -1
+#define SERIAL_PORT_2 1
 
 /**
  * This setting determines the communication speed of the printer.
@@ -132,7 +132,7 @@
 #endif
 
 // Name displayed in the LCD "Ready" message and Info menu
-#define CUSTOM_MACHINE_NAME "V1 CNC"
+#define CUSTOM_MACHINE_NAME "Kalles CNC"
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like http://www.uuidgenerator.net/version4
@@ -730,14 +730,14 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 200, 200, 800, 200 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {160,160,2560.00,160}//Kalle
 
 /**
  * Default Max Feed Rate (mm/s)
  * Override with M203
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 50, 50, 15, 25 }
+#define DEFAULT_MAX_FEEDRATE          {120, 120, 8.5, 120}//Kalle
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
@@ -1058,7 +1058,7 @@
 // Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way.
 #define INVERT_X_DIR false
 #define INVERT_Y_DIR true
-#define INVERT_Z_DIR false
+#define INVERT_Z_DIR true //Kalle
 
 // @section extruder
 
@@ -1092,8 +1092,8 @@
 // @section machine
 
 // The size of the print bed
-#define X_BED_SIZE 200
-#define Y_BED_SIZE 200
+#define X_BED_SIZE 999 //Kalle
+#define Y_BED_SIZE 999 //Kalle
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0

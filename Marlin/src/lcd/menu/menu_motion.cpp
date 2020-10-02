@@ -33,6 +33,9 @@
 
 #include "../../module/motion.h"
 
+#include "../../gcode/queue.h"
+GCodeQueue queue_Kalle;
+
 #if ENABLED(DELTA)
   #include "../../module/delta.h"
 #endif
@@ -70,7 +73,50 @@ inline void manual_move_to_current(AxisEnum axis
   manual_move_axis = (int8_t)axis;
 }
 
-//
+//Kalle below are a couple of functions and menus to create the custom "Set Coordinates"-menu function that lets you set the coordinates befor executing the move!
+  
+  float X_Coordinate_Move=0;
+  float Y_Coordinate_Move=0;
+  float Z_Coordinate_Move=0;
+ // Function to update the three variables that keeps track of your chosen coordinates (before you execute the actual move) increment/decrement 0.1, 1 or 10 at a time
+  static void SetCoordinateWithMultiplier(const char* namn, AxisEnum axis) {
+    if (ui.use_click()) return ui.goto_previous_screen_no_defer();
+    //ENCODER_DIRECTION_NORMAL();
+    
+    if (ui.encoderPosition) {
+      //refresh_cmd_timeout();
+      if(ui.encoderPosition%ENCODER_STEPS_PER_MENU_ITEM==0){ //Kalle to make one knob-step equal one movescale!
+        float Addition = float((int32_t)ui.encoderPosition)/ENCODER_STEPS_PER_MENU_ITEM;//Kalle ENCODER_STEPS_PER_MENU_ITEM=4
+        if(axis == X_AXIS){
+          X_Coordinate_Move += Addition; 
+          //CurrentPos=X_Coordinate_Move;
+        }else if(axis == Y_AXIS){
+          Y_Coordinate_Move += Addition;
+          //CurrentPos=Y_Coordinate_Move;
+        }else{
+          Z_Coordinate_Move += Addition;
+          //CurrentPos=Z_Coordinate_Move;
+        }
+        
+        ui.encoderPosition = 0;
+      }
+      ui.refresh(LCDVIEW_REDRAW_NOW);
+    }
+    //if (lcdDrawUpdate){
+     if(axis == X_AXIS){
+        //X_Coordinate_Move = 23.22;
+        MenuEditItemBase::draw_edit_screen(namn, move_menu_scale >= 0.1f ? ftostr41sign(X_Coordinate_Move) : ftostr43sign(X_Coordinate_Move));
+      }else if(axis == Y_AXIS){
+        MenuEditItemBase::draw_edit_screen(namn, move_menu_scale >= 0.1f ? ftostr41sign(Y_Coordinate_Move) : ftostr43sign(Y_Coordinate_Move));
+      }else{
+        MenuEditItemBase::draw_edit_screen(namn, move_menu_scale >= 0.1f ? ftostr41sign(Z_Coordinate_Move) : ftostr43sign(Z_Coordinate_Move));
+      }
+      
+   // }
+  }
+
+
+//  
 // "Motion" > "Move Axis" submenu
 //
 
@@ -204,6 +250,68 @@ void lcd_move_z() { _lcd_move_xyz(GET_TEXT(MSG_MOVE_Z), Z_AXIS); }
   }
 
 #endif // E_MANUAL
+
+//Kalle below are a couple of functions and menus to create the custom "Set Coordinates"-menu function that lets you set the coordinates befor executing the move!
+
+  void MoveToCoordinates(){
+    
+    char buffer_X[15];
+    char buffer_Y[15];
+    char buffer_Z[15];
+    char cmd[30]; 
+    dtostrf(X_Coordinate_Move, 1, 2, buffer_X); //1=min width of string, 2=decimals
+    dtostrf(Y_Coordinate_Move, 1, 2, buffer_Y);
+    dtostrf(Z_Coordinate_Move, 1, 2, buffer_Z);
+    
+    if(Z_Coordinate_Move>0){
+      //Start with Z to move it (up) first...
+      snprintf_P(cmd, 30, PSTR("G1 F200 Z%s"), buffer_Z);
+
+      queue_Kalle.enqueue_one_now(cmd);//execute 1st command
+    
+      snprintf_P(cmd,30,PSTR("G1 F2000 X%s Y%s"), buffer_X, buffer_Y);
+    
+    }else{        
+      sprintf(cmd,"G1 F2000 X%s Y%s", buffer_X, buffer_Y);
+      queue_Kalle.enqueue_one_now(cmd); //execute 1st command
+      
+      sprintf(cmd, "G1 F200 Z%s",buffer_Z);
+    }
+    //execute 2nd command
+    queue_Kalle.enqueue_one_now(cmd);
+    
+    //ui.goto_previous_screen_no_defer();
+    ui.return_to_status();
+  }
+//Help function to pass variables (not possible like this in Menu-item)
+  static void lcd_pos_x() { SetCoordinateWithMultiplier(PSTR("X"), X_AXIS); }
+  static void lcd_pos_y() { SetCoordinateWithMultiplier(PSTR("Y"), Y_AXIS); }
+  static void lcd_pos_z() { SetCoordinateWithMultiplier(PSTR("Z"), Z_AXIS); }
+
+//Function to owerwrite text on screen (used to add current choosen coordinates next to menu item X, Y and Z) like "X  2.23"
+  static void PrintOnLCDKalle(int RowIndex, int ColIndex, const char* text){
+    
+    uint8_t char_width = 6; 
+    uint8_t char_height = 12; 
+
+    uint8_t xStart = ColIndex*char_width+1;
+    uint8_t yStart = RowIndex*char_height; //RowIndex*rowHeight + kHalfChar;
+  
+    u8g.setPrintPos(xStart, yStart);
+    u8g.print(text);
+  }
+//Custom menu to set coordinates before you move! 
+  void SetCoodinatesAndMove() {
+    START_MENU();
+    BACK_ITEM(MSG_MOVE_AXIS);
+    SUBMENU(MSG_Kalle_X, lcd_pos_x);
+    SUBMENU(MSG_Kalle_Y, lcd_pos_y);
+    SUBMENU(MSG_Kalle_Z, lcd_pos_z);
+
+    //MENU_ITEM(function, "Execute move", MoveToCoordinates);
+    SUBMENU(MSG_Kalle_Execute, MoveToCoordinates);
+    END_MENU();
+  }
 
 //
 // "Motion" > "Move Xmm" > "Move XYZ" submenu
@@ -372,6 +480,62 @@ void menu_move() {
   void menu_bed_leveling();
 #endif
 
+void disableStepperMenu(){
+  START_MENU();
+  BACK_ITEM(MSG_MAIN);
+  GCODES_ITEM(MSG_DISABLE_STEPPERS, PSTR("M18"));
+  GCODES_ITEM(MSG_DISABLE_STEPPER_XY, PSTR("M18 X Y"));
+  GCODES_ITEM(MSG_DISABLE_STEPPER_Z, PSTR("M18 Z"));
+  END_MENU();
+}
+void goToHhomeAll(){
+  queue_Kalle.enqueue_one_now("G1 X0 Y0 F2000");
+  queue_Kalle.enqueue_one_now("G1 Z0 F300");
+  ui.return_to_status();
+}
+
+void gotoHomeMenu(){
+  START_MENU();
+  BACK_ITEM(MSG_MAIN);
+  SUBMENU(MSG_Kalle_GoToHomeAll,goToHhomeAll);
+  
+  GCODES_ITEM(MSG_Kalle_GoToHomeXY, PSTR("G1 X0 Y0 F2000"));
+  GCODES_ITEM(MSG_Kalle_GoToHomeZ, PSTR("G1 Z0 F300"));
+  GCODES_ITEM(MSG_Kalle_GoToHomeX, PSTR("G1 X0 F2000"));
+  GCODES_ITEM(MSG_Kalle_GoToHomeY, PSTR("G1 X0 F2000"));
+  END_MENU();
+}
+void setHomeHere(){
+  queue_Kalle.enqueue_one_now("G92 X0 Y0 Z0");
+  axis_known_position = 0xFF;
+  ui.return_to_status();
+}
+void setZHomeHere(){
+  queue_Kalle.enqueue_one_now("G92 Z0");
+  bitSet(axis_known_position,Z_AXIS);
+  ui.return_to_status();
+}
+void homingMenu(){
+  START_MENU();
+  BACK_ITEM(MSG_MAIN);
+  //
+  // Auto Home
+  //
+  SUBMENU(MSG_Kalle_MakeThisHome,setHomeHere);
+  SUBMENU(MSG_Kalle_MakeThisHomeZ,setZHomeHere);
+  //GCODES_ITEM(MSG_Kalle_MakeThisHome, PSTR("G92 X0 Y0 Z0"));
+
+  GCODES_ITEM(MSG_AUTO_HOME, G28_STR);
+  #if ENABLED(INDIVIDUAL_AXIS_HOMING_MENU)
+    
+    GCODES_ITEM(MSG_AUTO_HOME_XY, PSTR("G28 X Y"));
+    GCODES_ITEM(MSG_AUTO_HOME_X, PSTR("G28X"));
+    GCODES_ITEM(MSG_AUTO_HOME_Y, PSTR("G28Y"));
+    GCODES_ITEM(MSG_AUTO_HOME_Z, PSTR("G28Z"));
+  #endif
+
+  END_MENU();
+}
 void menu_motion() {
   START_MENU();
 
@@ -388,16 +552,9 @@ void menu_motion() {
   #endif
       SUBMENU(MSG_MOVE_AXIS, menu_move);
 
-  //
-  // Auto Home
-  //
-  GCODES_ITEM(MSG_AUTO_HOME, G28_STR);
-  #if ENABLED(INDIVIDUAL_AXIS_HOMING_MENU)
-    GCODES_ITEM(MSG_AUTO_HOME_X, PSTR("G28X"));
-    GCODES_ITEM(MSG_AUTO_HOME_Y, PSTR("G28Y"));
-    GCODES_ITEM(MSG_AUTO_HOME_Z, PSTR("G28Z"));
-  #endif
+  SUBMENU(MSG_Kalle_SetCoordinates, SetCoodinatesAndMove);
 
+  
   //
   // Auto Z-Align
   //

@@ -61,7 +61,7 @@ namespace Language_en {
   PROGMEM Language_Str MSG_DISABLE_STEPPERS                = _UxGT("Disable Steppers");
   PROGMEM Language_Str MSG_DEBUG_MENU                      = _UxGT("Debug Menu");
   PROGMEM Language_Str MSG_PROGRESS_BAR_TEST               = _UxGT("Progress Bar Test");
-  PROGMEM Language_Str MSG_AUTO_HOME                       = _UxGT("Auto Home");
+  PROGMEM Language_Str MSG_AUTO_HOME                       = _UxGT("Auto Home All");
   PROGMEM Language_Str MSG_AUTO_HOME_X                     = _UxGT("Home X");
   PROGMEM Language_Str MSG_AUTO_HOME_Y                     = _UxGT("Home Y");
   PROGMEM Language_Str MSG_AUTO_HOME_Z                     = _UxGT("Home Z");
@@ -348,7 +348,7 @@ namespace Language_en {
   PROGMEM Language_Str MSG_CANCEL_OBJECT                   = _UxGT("Cancel Object");
   PROGMEM Language_Str MSG_CANCEL_OBJECT_N                 = _UxGT("Cancel Object =");
   PROGMEM Language_Str MSG_OUTAGE_RECOVERY                 = _UxGT("Outage Recovery");
-  PROGMEM Language_Str MSG_MEDIA_MENU                      = _UxGT("Print from Media");
+  PROGMEM Language_Str MSG_MEDIA_MENU                      = _UxGT("Select file (SD)");
   PROGMEM Language_Str MSG_NO_MEDIA                        = _UxGT("No Media");
   PROGMEM Language_Str MSG_DWELL                           = _UxGT("Sleep...");
   PROGMEM Language_Str MSG_USERWAIT                        = _UxGT("Click to Resume...");
@@ -556,6 +556,25 @@ namespace Language_en {
   PROGMEM Language_Str MSG_INVADERS                        = _UxGT("Invaders");
   PROGMEM Language_Str MSG_SNAKE                           = _UxGT("Sn4k3");
   PROGMEM Language_Str MSG_MAZE                            = _UxGT("Maze");
+  
+  PROGMEM Language_Str MSG_Kalle_SetCoordinates            = _UxGT("Set Coordinates");
+  PROGMEM Language_Str MSG_Kalle_X                         = _UxGT("X");
+  PROGMEM Language_Str MSG_Kalle_Y                         = _UxGT("Y");
+  PROGMEM Language_Str MSG_Kalle_Z                         = _UxGT("Z");  
+  PROGMEM Language_Str MSG_Kalle_Execute                   = _UxGT("Execute");
+  PROGMEM Language_Str MSG_Kalle_Homing                   = _UxGT("Set Home");
+  PROGMEM Language_Str MSG_Kalle_GotoHoming               = _UxGT("Goto Home");
+  PROGMEM Language_Str MSG_AUTO_HOME_XY                   = _UxGT("Home XY");
+  PROGMEM Language_Str MSG_Kalle_DisableStepperMenu       = _UxGT("Steppers ON/OFF");
+  PROGMEM Language_Str MSG_DISABLE_STEPPER_XY              = _UxGT("Disable XY");
+  PROGMEM Language_Str MSG_DISABLE_STEPPER_Z              = _UxGT("Disable Z");
+  PROGMEM Language_Str MSG_Kalle_MakeThisHome              = _UxGT("Make this home");
+  PROGMEM Language_Str MSG_Kalle_MakeThisHomeZ              = _UxGT("Make this home (Z)");
+  PROGMEM Language_Str MSG_Kalle_GoToHomeAll              = _UxGT("All");
+  PROGMEM Language_Str MSG_Kalle_GoToHomeXY              = _UxGT("XY");
+  PROGMEM Language_Str MSG_Kalle_GoToHomeZ               = _UxGT("Z");
+  PROGMEM Language_Str MSG_Kalle_GoToHomeX               = _UxGT("X");
+  PROGMEM Language_Str MSG_Kalle_GoToHomeY               = _UxGT("Y");
 
   #define MSG_1_LINE(A)     A "\0"   "\0"
   #define MSG_2_LINE(A,B)   A "\0" B "\0"

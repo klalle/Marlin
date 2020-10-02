@@ -398,7 +398,7 @@ void Endstops::event_handler() {
     SERIAL_EOL();
 
     #if HAS_SPI_LCD
-      ui.status_printf_P(0, PSTR(S_FMT " %c %c %c %c"), GET_TEXT(MSG_LCD_ENDSTOPS), chrX, chrY, chrZ, chrP);
+      //ui.status_printf_P(0, PSTR(S_FMT " %c %c %c %c"), GET_TEXT(MSG_LCD_ENDSTOPS), chrX, chrY, chrZ, chrP); //Kalle (tar bort texten "Endstop X" när man går negativa tal... tror detta är rätt ställe)
     #endif
 
     #if BOTH(SD_ABORT_ON_ENDSTOP_HIT, SDSUPPORT)
