@@ -489,7 +489,7 @@ public:
 
     static screenFunc_t currentScreen;
     static bool screen_changed;
-    static void goto_screen(const screenFunc_t screen, const uint16_t encoder=0, const uint8_t top=0, const uint8_t items=0);
+    static void goto_screen(const screenFunc_t screen, const uint16_t encoder=1, const uint8_t top=0, const uint8_t items=0);
     static void save_previous_screen();
 
     // goto_previous_screen and go_back may also be used as menu item callbacks

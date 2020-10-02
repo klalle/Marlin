@@ -85,8 +85,8 @@ inline void manual_move_to_current(AxisEnum axis
     
     if (ui.encoderPosition) {
       //refresh_cmd_timeout();
-      if(ui.encoderPosition%ENCODER_STEPS_PER_MENU_ITEM==0){ //Kalle to make one knob-step equal one movescale!
-        float Addition = float((int32_t)ui.encoderPosition)/ENCODER_STEPS_PER_MENU_ITEM;//Kalle ENCODER_STEPS_PER_MENU_ITEM=4
+      if(ui.encoderPosition%ENCODER_STEPS_PER_MENU_ITEM==0){ 
+        float Addition = float((int32_t)ui.encoderPosition)/ENCODER_STEPS_PER_MENU_ITEM;
         if(axis == X_AXIS){
           X_Coordinate_Move += Addition; 
           //CurrentPos=X_Coordinate_Move;
