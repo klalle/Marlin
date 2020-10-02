@@ -1,7 +1,7 @@
-This is my modified version of Marlin. 
-Take a look att my modifications [here](https://github.com/Allted/Marlin/compare/V1CNC_Ramps_Dual...klalle:V1CNC_Ramps_Dual_Kalle) (diff against V1CNC_Ramps_Dual) 
-I have basically altered the menu to make it more CNC-friendly. 
-I have removed and moved menu items and added some custom ones (not in the built in custom-menu, but in the root menu)
+This is my modified version of Marlin. <br>
+Take a look att my modifications [here](https://github.com/Allted/Marlin/compare/V1CNC_Ramps_Dual...klalle:V1CNC_Ramps_Dual_Kalle) (diff against V1CNC_Ramps_Dual) <br>
+I have basically altered the menu to make it more CNC-friendly. <br>
+I have removed and moved menu items and added some custom ones (not in the built in custom-menu, but in the root menu)<br>
 
 #### This is my menu so far: <br>
 * Info Scren
@@ -45,6 +45,7 @@ I have removed and moved menu items and added some custom ones (not in the built
 
   * Configuration (unmodified)
 
+I have allso configured Marlin to listen for gcode commands sent over Serial1 (as well as Serial0=usb) so that I can [controll the CNC by using a Joystick.](https://github.com/klalle/Marlin_Joystick)
 
 /Kalle
 
