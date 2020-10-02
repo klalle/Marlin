@@ -561,20 +561,19 @@ namespace Language_en {
   PROGMEM Language_Str MSG_Kalle_X                         = _UxGT("X");
   PROGMEM Language_Str MSG_Kalle_Y                         = _UxGT("Y");
   PROGMEM Language_Str MSG_Kalle_Z                         = _UxGT("Z");  
+  PROGMEM Language_Str MSG_Kalle_All                       = _UxGT("All");
+  PROGMEM Language_Str MSG_Kalle_XY                        = _UxGT("XY");
   PROGMEM Language_Str MSG_Kalle_Execute                   = _UxGT("Execute");
-  PROGMEM Language_Str MSG_Kalle_Homing                   = _UxGT("Set Home");
-  PROGMEM Language_Str MSG_Kalle_GotoHoming               = _UxGT("Goto Home");
-  PROGMEM Language_Str MSG_AUTO_HOME_XY                   = _UxGT("Home XY");
-  PROGMEM Language_Str MSG_Kalle_DisableStepperMenu       = _UxGT("Steppers ON/OFF");
+  PROGMEM Language_Str MSG_Kalle_Homing                    = _UxGT("Set Home");
+  PROGMEM Language_Str MSG_Kalle_GotoHoming                = _UxGT("Goto Home");
+  PROGMEM Language_Str MSG_AUTO_HOME_XY                    = _UxGT("Home XY");
+  PROGMEM Language_Str MSG_Kalle_DisableStepperMenu        = _UxGT("Steppers ON/OFF");
   PROGMEM Language_Str MSG_DISABLE_STEPPER_XY              = _UxGT("Disable XY");
-  PROGMEM Language_Str MSG_DISABLE_STEPPER_Z              = _UxGT("Disable Z");
+  PROGMEM Language_Str MSG_DISABLE_STEPPER_Z               = _UxGT("Disable Z");
   PROGMEM Language_Str MSG_Kalle_MakeThisHome              = _UxGT("Set to: X0 Y0 Z0");
-  PROGMEM Language_Str MSG_Kalle_MakeThisHomeZ              = _UxGT("Set to: Z0");
-  PROGMEM Language_Str MSG_Kalle_GoToHomeAll              = _UxGT("All");
-  PROGMEM Language_Str MSG_Kalle_GoToHomeXY              = _UxGT("XY");
-  PROGMEM Language_Str MSG_Kalle_GoToHomeZ               = _UxGT("Z");
-  PROGMEM Language_Str MSG_Kalle_GoToHomeX               = _UxGT("X");
-  PROGMEM Language_Str MSG_Kalle_GoToHomeY               = _UxGT("Y");
+  PROGMEM Language_Str MSG_Kalle_MakeThisHomeZ             = _UxGT("Set to: Z0");
+
+
 
   #define MSG_1_LINE(A)     A "\0"   "\0"
   #define MSG_2_LINE(A,B)   A "\0" B "\0"

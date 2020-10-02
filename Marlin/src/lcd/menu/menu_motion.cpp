@@ -497,12 +497,12 @@ void goToHhomeAll(){
 void gotoHomeMenu(){
   START_MENU();
   BACK_ITEM(MSG_MAIN);
-  SUBMENU(MSG_Kalle_GoToHomeAll,goToHhomeAll);
+  SUBMENU(MSG_Kalle_All,goToHhomeAll);
   
-  GCODES_ITEM(MSG_Kalle_GoToHomeXY, PSTR("G1 X0 Y0 F2000"));
-  GCODES_ITEM(MSG_Kalle_GoToHomeZ, PSTR("G1 Z0 F300"));
-  GCODES_ITEM(MSG_Kalle_GoToHomeX, PSTR("G1 X0 F2000"));
-  GCODES_ITEM(MSG_Kalle_GoToHomeY, PSTR("G1 X0 F2000"));
+  GCODES_ITEM(MSG_Kalle_XY, PSTR("G1 X0 Y0 F2000"));
+  GCODES_ITEM(MSG_Kalle_Z, PSTR("G1 Z0 F300"));
+  GCODES_ITEM(MSG_Kalle_X, PSTR("G1 X0 F2000"));
+  GCODES_ITEM(MSG_Kalle_Y, PSTR("G1 X0 F2000"));
   END_MENU();
 }
 void setHomeHere(){
@@ -532,7 +532,7 @@ void homingMenu(){
     GCODES_ITEM(MSG_AUTO_HOME_Y, PSTR("G28Y"));
     GCODES_ITEM(MSG_AUTO_HOME_Z, PSTR("G28Z"));
   #endif
-  
+
   GCODES_ITEM(MSG_AUTO_HOME, G28_STR);
 
   END_MENU();
