@@ -45,7 +45,6 @@ I have allso configured Marlin to listen for gcode commands sent over Serial1 (a
 /Kalle
 
 
-
 # Marlin 3D Printer Firmware
 
 ![GitHub](https://img.shields.io/github/license/marlinfirmware/marlin.svg)
