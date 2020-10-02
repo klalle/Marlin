@@ -38,6 +38,8 @@ I have removed and moved menu items and added some custom ones (not in the built
     * Not in use (this is where you easily can add more menu items in Configuration_adv.h - search for "#define CUSTOM_USER_MENUS")
   * Configuration (unmodified)
 
+Menu is configured to select the 2nd item when entering submenu (Usually I dont want to start by returning to previous menu (first item = back))
+
 I have allso configured Marlin to listen for gcode commands sent over Serial1 (as well as Serial0=usb) so that I can [controll the CNC by using a Joystick.](https://github.com/klalle/Marlin_Joystick)
 
 /Kalle
