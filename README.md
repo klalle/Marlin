@@ -4,7 +4,7 @@ I have basically altered the menu to make it more CNC-friendly. <br>
 I have removed and moved menu items and added some custom ones (not in the built in custom-menu, but in the root menu)<br>
 
 #### This is my menu so far: <br>
-* Info Scren
+* Info Screen
   * Select file (SD)
   * Goto Home
     * All
@@ -13,14 +13,14 @@ I have removed and moved menu items and added some custom ones (not in the built
     * X
     * Y
   * Set Home
-    * Make this home
-    * Make this home (Z)
-    * Auto home all
+    * Set to: X0 Y0 Z0
+    * Set to: Z0
     * Home XY
     * Home X
     * Home Y
     * Home Z
-    * ~~Temp Z offset~~ (not implemented jet)
+    * Auto home all
+    * ~~Temp Z offset~~ (not implemented yet)
   * Steppers ON/OFF
     * Disable Steppers
     * Disable XY

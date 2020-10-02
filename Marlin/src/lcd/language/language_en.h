@@ -568,8 +568,8 @@ namespace Language_en {
   PROGMEM Language_Str MSG_Kalle_DisableStepperMenu       = _UxGT("Steppers ON/OFF");
   PROGMEM Language_Str MSG_DISABLE_STEPPER_XY              = _UxGT("Disable XY");
   PROGMEM Language_Str MSG_DISABLE_STEPPER_Z              = _UxGT("Disable Z");
-  PROGMEM Language_Str MSG_Kalle_MakeThisHome              = _UxGT("Make this home");
-  PROGMEM Language_Str MSG_Kalle_MakeThisHomeZ              = _UxGT("Make this home (Z)");
+  PROGMEM Language_Str MSG_Kalle_MakeThisHome              = _UxGT("Set to: X0 Y0 Z0");
+  PROGMEM Language_Str MSG_Kalle_MakeThisHomeZ              = _UxGT("Set to: Z0");
   PROGMEM Language_Str MSG_Kalle_GoToHomeAll              = _UxGT("All");
   PROGMEM Language_Str MSG_Kalle_GoToHomeXY              = _UxGT("XY");
   PROGMEM Language_Str MSG_Kalle_GoToHomeZ               = _UxGT("Z");

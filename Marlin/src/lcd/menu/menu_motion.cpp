@@ -525,7 +525,6 @@ void homingMenu(){
   SUBMENU(MSG_Kalle_MakeThisHomeZ,setZHomeHere);
   //GCODES_ITEM(MSG_Kalle_MakeThisHome, PSTR("G92 X0 Y0 Z0"));
 
-  GCODES_ITEM(MSG_AUTO_HOME, G28_STR);
   #if ENABLED(INDIVIDUAL_AXIS_HOMING_MENU)
     
     GCODES_ITEM(MSG_AUTO_HOME_XY, PSTR("G28 X Y"));
@@ -533,6 +532,8 @@ void homingMenu(){
     GCODES_ITEM(MSG_AUTO_HOME_Y, PSTR("G28Y"));
     GCODES_ITEM(MSG_AUTO_HOME_Z, PSTR("G28Z"));
   #endif
+  
+  GCODES_ITEM(MSG_AUTO_HOME, G28_STR);
 
   END_MENU();
 }
