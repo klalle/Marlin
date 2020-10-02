@@ -5,16 +5,13 @@ I have removed and moved menu items and added some custom ones (not in the built
 
 #### This is my menu so far: <br>
 * Info Scren
-
   * Select file (SD)
-
   * Goto Home
     * All
     * XY
     * Z
     * X
     * Y
-
   * Set Home
     * Make this home
     * Make this home (Z)
@@ -23,13 +20,11 @@ I have removed and moved menu items and added some custom ones (not in the built
     * Home X
     * Home Y
     * Home Z
-      * ~~Temp Z offset~~ (not implemented jet)
-
+    * ~~Temp Z offset~~ (not implemented jet)
   * Steppers ON/OFF
     * Disable Steppers
     * Disable XY
     * Disable Z
-
   * Motion
     * Move Axis
       * This menu is unmodified! X,Y,Z - 10,10.1....
@@ -39,10 +34,8 @@ I have removed and moved menu items and added some custom ones (not in the built
       * Z
       * Execute
     * Disable steppers
-  
   * V1 Custom Menu
    * Not in use (this is where you easily can add more menu items in Configuration_adv.h - search for "#define CUSTOM_USER_MENUS")
-
   * Configuration (unmodified)
 
 I have allso configured Marlin to listen for gcode commands sent over Serial1 (as well as Serial0=usb) so that I can [controll the CNC by using a Joystick.](https://github.com/klalle/Marlin_Joystick)
