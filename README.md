@@ -27,7 +27,7 @@ I have removed and moved menu items and added some custom ones (not in the built
     * Disable Z
   * Motion
     * Move Axis
-      * This menu is unmodified! X,Y,Z - 10,10.1....
+      * This menu is unmodified! X,Y,Z - 10,1,0.1....
     * Set Coordinates
       * X
       * Y
