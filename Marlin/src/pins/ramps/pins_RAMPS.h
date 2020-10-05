@@ -102,7 +102,7 @@
 #endif
 #ifndef Z_STOP_PIN
   #ifndef Z_MIN_PIN
-    #define Z_MIN_PIN                         -1//18
+    #define Z_MIN_PIN                         20//18 //use I2C-SDA-pin (D20) which is next to Zmax-pin and has same 5v-GND-D20 pinout (same cable, just move it 2 steps to right)
   #endif
   #ifndef Z_MAX_PIN
     #define Z_MAX_PIN                         -1//19
